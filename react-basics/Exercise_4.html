@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise_3</title>
+</head>
+<body>
+    <div class="js-container">
+
+    </div>
+     <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type = "text/babel">
+       function UserInput (){
+        const [name, setName] = React.useState("");
+
+        function inputName(event) {
+            setName(event.target.value);
+        }
+        return (
+            <>
+                <input placeholder = "Type a name here" onChange = {inputName}value = {name} />
+                <button onClick = {() => {setName("")}}>Reset</button>
+                <button onClick = {() => {setName("Alice")}}>Example</button>
+                <p>Hello {name}</p>
+            </>
+        )
+       }
+
+       function App (){
+        return (
+            <UserInput />
+        )
+       }
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />)
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise_7</title>
+</head>
+<body>
+     <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src = "https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type = "text/babel">
+        function Timer() {
+        //     const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'))
+
+
+        //     React.useEffect(() => {
+        //       setInterval(() => {
+        //         const newTime = dayjs().format('HH:mm:ss');
+        //         setTime(newTime);
+        //       }, 1000)
+        //     }, [])
+
+        //     return (
+        //         <p>{time}</p>
+        //     )
+
+        // 
+        const [time, setTime] = React.useState('12:00:00');
+
+        // If you put this outside useEffect:
+        setInterval(() => {
+            setTime('12:00:01'); // This triggers a re-render!
+        }, 1000);
+
+        return <p>{time}</p>;
+        }
+
+
+        function App() {
+            return (
+                <Timer />
+            )
+        }
+        const container = document.querySelector(".js-container");
+        ReactDOM.createRoot(container).render(<App />)
+    </script>
+</body>
+</html>
