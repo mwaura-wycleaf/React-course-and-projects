@@ -1,8 +1,8 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
-import { useState, useEffect,Fragment } from 'react';
-import { formatMoney } from '../utils/money.js';
-import { Header } from '../Components/Header';
+import { useState, useEffect, Fragment } from 'react';
+import { formatMoney } from '../../utils/money.js';
+import { Header } from '../../Components/Header.jsx';
 import './OrdersPage.css';
 
 export function OrderPage({ cart }) {
@@ -49,7 +49,7 @@ export function OrderPage({ cart }) {
                 <div className="order-details-grid">
                   {order.products.map((orderProduct) => {
                     return (
-                      <Fragment key = {orderProduct.product.id}>
+                      <Fragment key={orderProduct.product.id}>
                         <div className="product-image-container">
                           <img src={orderProduct.product.image} />
                         </div>
@@ -59,9 +59,14 @@ export function OrderPage({ cart }) {
                             {orderProduct.name}
                           </div>
                           <div className="product-delivery-date">
-                            Arriving on: {dayjs(orderProduct.product.estimatedDeliveryTimeMs).format('MMMM D')}
+                            Arriving on:{' '}
+                            {dayjs(
+                              orderProduct.product.estimatedDeliveryTimeMs,
+                            ).format('MMMM D')}
                           </div>
-                          <div className="product-quantity">Quantity: {orderProduct.quantity}</div>
+                          <div className="product-quantity">
+                            Quantity: {orderProduct.quantity}
+                          </div>
                           <button className="buy-again-button button-primary">
                             <img
                               className="buy-again-icon"
