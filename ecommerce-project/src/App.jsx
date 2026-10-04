@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Routes, Route } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { HomePage } from './Pages/home/HomePage.jsx';
 import { CheckoutPage } from './Pages/checkout/CheckoutPage.jsx';
 import { OrderPage } from './Pages/orders/OrdersPage.jsx';
@@ -9,18 +9,27 @@ import './App.css';
 function App() {
   const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    const fetchAppData = async () => {
+
+  const loadCart = useCallback(async () => {
+    try {
       const response = await axios.get('/api/cart-items?expand=product');
       setCart(response.data);
+    }catch (error) {
+      console.error ("Failed to load cart:", error)
     }
-      fetchAppData();
-  }, []);
+      
+      
+    }, [])
+
+
+  useEffect(() => {
+    loadCart();
+  }, [loadCart]);
   return (
     <Routes>
-      <Route index element={<HomePage cart={cart} />} />
+      <Route index element={<HomePage cart={cart} loadCart = {loadCart} />} />
       <Route path="checkout" element={<CheckoutPage cart={cart} />} />
-      <Route path="orders" element={<OrderPage />} cart={cart} />
+      <Route path="orders" element={<OrderPage cart={cart} />}  />
     </Routes>
   );
 }
