@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log-in-React</title>
+    <style>
+        p {
+            font-size: 20px;
+        }
+
+        .email, .password {
+            margin-bottom:10px;
+            padding:5px 12px;
+            border-width:1px;
+            border-radius:4px;
+        }
+
+        .login, .sign-up {
+            background-color: rgb(0, 123, 255);
+            border: none;
+            padding:6px 12px;
+            border-radius: 4px;
+            color:white;
+            margin-right: 10px;
+        }
+
+        .show {
+            margin-left: 3px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function LogInForm() {
+            const [showPassword, setShowPassword] = React.useState(false);
+
+            function togglePassword() {
+                setShowPassword(!showPassword);
+            }
+            return (
+                <>
+                  <div>
+                        <div>
+                            <input className = "email" type = "email" placeholder = "Email" />
+                        </div>
+                        <input className = "password" type = {showPassword ? "text" : "password"} placeholder = "Password" />
+                        <button onClick = {togglePassword} className = "show">{showPassword ? "Hide" : "Show"}</button>
+                    </div>
+                    <button className = "login">Login</button>
+                    <button className = "sign-up">Sign Up</button>
+                </>
+            )
+        }
+
+        function App() {
+            return (
+                <>
+                    <p> Hello, welcome to my website</p>
+                    <LogInForm />
+               </>
+            )
+            
+           
+        }
+        const container = document.querySelector(".js-container")
+        ReactDOM.createRoot(container).render(<App />)
+    </script>
+</body>
+</html>
