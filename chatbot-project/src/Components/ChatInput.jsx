@@ -4,32 +4,37 @@ import './ChatInput.css';
 
 export function ChatInput( {chatMessages, setChatMessages}) {
   const [inputText, setInputText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function saveInputText(event) {
       setInputText(event.target.value)
   }
 
   async function sendMessage() {
-
+    if(isLoading || inputText === "") {
+      return
+    }
+    setIsLoading(true);
     setInputText("");
+
+    const loadingMessageId = crypto.randomUUID();
     
     const newChatMessage = [
     ...chatMessages, {
       message: inputText,
       sender: "user",
       id: crypto.randomUUID()
+    }, {
+      message: "Loading...",
+      sender: "robot",
+      id: loadingMessageId
     }];
     setChatMessages(newChatMessage);
 
     const response = await Chatbot.getResponseAsync(inputText);
-      setChatMessages([
-    ...newChatMessage, {
-      message: response,
-      sender: "robot",
-      id: crypto.randomUUID()
-    }]);
+      setChatMessages(prevMessages => prevMessages.map(msg => msg.id === loadingMessageId ? {...msg, message: response} : msg));
 
-    
+    setIsLoading(false);
   }
 
     function keyDown(event){
