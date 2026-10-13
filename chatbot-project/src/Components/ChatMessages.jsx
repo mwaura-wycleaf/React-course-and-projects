@@ -12,15 +12,17 @@ function ChatMessages({chatMessages}) {
       containerElem.scrollTop = containerElem.scrollHeight;
     }
   }, [chatMessages]);
-  console.log(chatMessages)
+    
   return (
     <div className = "chat-messages-container" ref = {chatMessagesRef}>
-      {chatMessages.map((chatMessage) => {
+      {chatMessages.length === 0 ? (<p>Welcome to the chatbot project! Send a message using the textbox below</p>): (
+        chatMessages.map((chatMessage) => {
           return (
             <ChatMessage message = {chatMessage.message} sender = {chatMessage.sender} key = {chatMessage.id} />
           )
         })
-      }
+      )}
+    
     </div>
   );
 }

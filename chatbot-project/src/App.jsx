@@ -6,23 +6,7 @@ import './App.css'
 
 function App() {
        
-        const [chatMessages, setChatMessages]= useState([{
-          message: "hello chatbot",
-          sender: "user",
-          id: "id1"
-        }, {
-          message: "Hello! How can i help you?",
-          sender: "robot",
-          id: "id2"
-        }, {
-          message: "can you get me today's date",
-          sender: "user",
-          id: "id3"
-        }, {
-          message: "Today is September 23",
-          sender: "robot",
-          id: "id4"
-        }]
+        const [chatMessages, setChatMessages]= useState([]
         );
         //const [chatMessages, setChatMessages] = array;
         //const chatMessages = array[0];
