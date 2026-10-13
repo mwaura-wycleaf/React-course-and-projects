@@ -23,3 +23,8 @@ display: flex;
 margin-bottom: 60px;
 
 }
+
+.loadingSpinner {
+    height: 40px;
+    margin: -15px ;
+}

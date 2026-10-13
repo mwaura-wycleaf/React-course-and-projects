@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {Chatbot} from 'supersimpledev'
+import loadingSpinner from "../assets/loading-spinner.gif"
 import './ChatInput.css';
 
 export function ChatInput( {chatMessages, setChatMessages}) {
@@ -25,7 +26,7 @@ export function ChatInput( {chatMessages, setChatMessages}) {
       sender: "user",
       id: crypto.randomUUID()
     }, {
-      message: "Loading...",
+      message: <img className = "loadingSpinner" src = {loadingSpinner} />,
       sender: "robot",
       id: loadingMessageId
     }];
