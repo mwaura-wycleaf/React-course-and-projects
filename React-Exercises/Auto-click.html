@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>react-date</title>
+    <style>
+        .flex-container {
+            display: flex;
+            height: 100vh;
+            background-color: rgb(222, 222, 222);
+            align-items: center;
+            justify-content: center;
+        }
+        .click {
+            background-color: rgb(25,135, 84);
+            color: white;
+            padding: 9px 16px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        
+    </style>
 </head>
 <body>
     <div class="js-container"></div>
@@ -32,12 +51,12 @@
             }, [isAutoRunning])
             
             return (
-                <>
-                  <button onClick = {() => {setCount(count + 1)}} >Clicked {count} times</button>
-                  <button onClick = {() => {setCount(0)}}>Reset</button>
-                  <button onClick = {() => {setIsAutoRunning(!isAutoRunning)}} >{isAutoRunning ? "Stop" : "Start"} Auto Click</button>
+                <div className = "flex-container">
+                  <button className = "click" onClick = {() => {setCount(count + 1)}} >Clicked {count} times</button>
+                  <button className = "click" onClick = {() => {setCount(0)}}>Reset</button>
+                  <button className = "click" onClick = {() => {setIsAutoRunning(!isAutoRunning)}} >{isAutoRunning ? "Stop" : "Start"} Auto Click</button>
                   
-                </>
+                </div>
             )
         }
         
