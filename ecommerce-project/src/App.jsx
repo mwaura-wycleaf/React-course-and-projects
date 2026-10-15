@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { HomePage } from './Pages/home/HomePage.jsx';
 import { CheckoutPage } from './Pages/checkout/CheckoutPage.jsx';
 import { OrderPage } from './Pages/orders/OrdersPage.jsx';
+import { TrackPage } from './Pages/Track/TrackPage.jsx';
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <Route index element={<HomePage cart={cart} loadCart = {loadCart} />} />
       <Route path="checkout" element={<CheckoutPage cart={cart} loadCart = {loadCart} />} />
       <Route path="orders" element={<OrderPage cart={cart} />}  />
+      <Route path="tracking" element={<TrackPage cart={cart} />}  />
     </Routes>
   );
 }
