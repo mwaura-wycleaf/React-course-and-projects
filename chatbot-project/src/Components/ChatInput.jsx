@@ -41,6 +41,11 @@ export function ChatInput( {chatMessages, setChatMessages}) {
     function keyDown(event){
       (event.key === "Enter") ? sendMessage() : (event.key === "Escape" ? setInputText("") : null);
     }
+
+    function clearChatMessages() {
+      setChatMessages([]);
+      localStorage.setItem('messages', JSON.stringify([]));
+    }
   return (
     <div className = "chat-input-container">
       <input 
@@ -49,6 +54,7 @@ export function ChatInput( {chatMessages, setChatMessages}) {
         className = "chat-input" onKeyDown = {keyDown}
         />
       <button onClick = {sendMessage} className = "send-button">Send</button>
+      <button onClick = {clearChatMessages} className = "send-button">Clear</button>
     </div>
   );
 }
