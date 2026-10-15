@@ -5,6 +5,7 @@ import { DeliveryOptions } from './DeliveryOptions';
 export function OrderSummary({cart, deliveryOptions, loadCart}) {
   return (
     <>
+     <link rel="icon"  href="orders-favicon.png" />
       <div className="order-summary">
         {deliveryOptions.length > 0 &&
           cart.map((cartItem) => {

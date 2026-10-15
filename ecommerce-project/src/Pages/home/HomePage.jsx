@@ -18,7 +18,9 @@ export function HomePage({ cart, loadCart }) {
 
   return (
     <>
+    <link rel="icon"  href="home-favicon.png" />
       <title>Ecommerce Project</title>
+      
 
       <Header cart={cart} />
 

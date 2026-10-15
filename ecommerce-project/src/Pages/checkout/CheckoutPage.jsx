@@ -23,6 +23,7 @@ export function CheckoutPage({ cart, loadCart }) {
   }, [cart]);
   return (
     <>
+      <link rel="icon"  href="cart-favicon.png" />
       <title>Checkout</title>
       <OrderSummary cart = {cart} deliveryOptions = {deliveryOptions} loadCart = {loadCart} />
       
