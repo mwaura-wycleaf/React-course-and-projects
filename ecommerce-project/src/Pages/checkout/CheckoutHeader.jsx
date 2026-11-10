@@ -1,8 +1,8 @@
-import { Link }  from 'react-router'
+import { Link } from 'react-router';
 export function CheckoutHeader() {
-    return (
-        <>
-          <div className="checkout-header">
+  return (
+    <>
+      <div className="checkout-header">
         <div className="header-content">
           <div className="checkout-header-left-section">
             <Link to="/">
@@ -24,6 +24,6 @@ export function CheckoutHeader() {
           </div>
         </div>
       </div>
-        </>
-    )
+    </>
+  );
 }
